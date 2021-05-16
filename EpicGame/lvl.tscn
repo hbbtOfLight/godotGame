@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://platform_not_to_fail.png" type="Texture" id=2]
+[ext_resource path="res://scenes/EnemyM.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/lvl_train.gd" type="Script" id=4]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 504.346, 16.0481 )
+
+[node name="lvl" type="Node"]
+script = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -203.125, 10.6908 )
+scale = Vector2( 5.04, 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 142.544, 553.248 )
+scale = Vector2( 0.132466, 0.129448 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 142.544, 554.139 )
+scale = Vector2( 0.199999, 1 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 516.721, -76.6173 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+position = Vector2( 142.544, 553.248 )
+scale = Vector2( 0.132466, 0.129448 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 142.544, 554.139 )
+scale = Vector2( 0.199999, 1.41284 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( -30.2905, -165.707 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
+position = Vector2( 142.544, 553.248 )
+scale = Vector2( 0.132466, 0.129448 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 142.544, 554.139 )
+scale = Vector2( 0.199999, 1 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2( 236.979, -293.997 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D5"]
+position = Vector2( 142.544, 553.248 )
+scale = Vector2( 0.132466, 0.129448 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2( 142.544, 554.139 )
+scale = Vector2( 0.199999, 1 )
+shape = SubResource( 1 )
+
+[node name="EnemyM" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 67.5466, 513.901 )
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]

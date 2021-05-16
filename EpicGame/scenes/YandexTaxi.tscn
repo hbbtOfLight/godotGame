@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/YandexTaxi.gd" type="Script" id=1]
+[ext_resource path="res://textures/taxi.png" type="Texture" id=2]
+
+[node name="YandexTaxi" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -62, -46 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3, 3.09944e-06 )
+scale = Vector2( 6, 4.8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.999992, 1.5 )
+rotation = 6.28319
+scale = Vector2( 0.255, 0.511278 )
+texture = ExtResource( 2 )
+flip_h = true
+[connection signal="body_entered" from="." to="." method="_on_YandexTaxi_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
