@@ -38,6 +38,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerGlVars="*res://scripts/PLAYER_GL_VARS.gd"
+SceneChanger="*res://scripts/SceneChanger.gd"
 
 [display]
 

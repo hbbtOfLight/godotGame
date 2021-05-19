@@ -4,18 +4,19 @@
 [ext_resource path="res://scripts/lvlscripts/LevelDV.gd" type="Script" id=2]
 [ext_resource path="res://scenes/EvilDV.tscn" type="PackedScene" id=3]
 [ext_resource path="res://dedus.png" type="Texture" id=4]
-[ext_resource path="res://scripts/Bullet.gd" type="Script" id=5]
-[ext_resource path="res://textures/chalk_2.png" type="Texture" id=6]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.8921, 71.1636 )
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=5]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 27.9096, 48.0602 )
+extents = Vector2( 32.8921, 71.1636 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 26, 8.41446 )
+extents = Vector2( 27.9096, 48.0602 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+font_data = ExtResource( 6 )
 
 [node name="LevelDV" type="Node"]
 script = ExtResource( 2 )
@@ -35,12 +36,12 @@ texture = ExtResource( 4 )
 [node name="StandCollision" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0.894882, 2.14984 )
 scale = Vector2( 0.832538, 0.673176 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="Player"]
 position = Vector2( 2.45441, 24.8639 )
 rotation = -1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="UpperRayCast" type="RayCast2D" parent="Player"]
@@ -52,29 +53,65 @@ enabled = true
 [node name="BulletPos" type="Position2D" parent="Player"]
 position = Vector2( -32.2906, 0.373535 )
 
-[node name="Bullet" type="Area2D" parent="."]
-position = Vector2( 1045, 90 )
+[node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Bullet"]
-position = Vector2( 34.5, 2.50002 )
-rotation = 0.872665
-scale = Vector2( 0.0698835, 0.0657493 )
-texture = ExtResource( 6 )
+[node name="GUI" type="MarginContainer" parent="HUD" instance=ExtResource( 7 )]
+anchor_right = 1.0
+margin_bottom = 137.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CollisionBullet" type="CollisionShape2D" parent="Bullet"]
-position = Vector2( 40, 6 )
-shape = SubResource( 3 )
+[node name="EndPanel" type="Panel" parent="HUD"]
+visible = false
+margin_left = 145.0
+margin_top = 196.0
+margin_right = 185.0
+margin_bottom = 236.0
+rect_scale = Vector2( 19.2, 5.96 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="NotifyVisibility" type="VisibilityNotifier2D" parent="Bullet"]
-position = Vector2( 39.5, 5 )
-scale = Vector2( 2.95, 1 )
+[node name="CatchLabel" type="Label" parent="HUD/EndPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.037424, 0.186611 )
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HUD" parent="." instance=ExtResource( 7 )]
+[node name="NextBtn" type="Button" parent="HUD/EndPanel"]
+margin_left = 10.625
+margin_top = 26.0067
+margin_right = 52.625
+margin_bottom = 46.0067
+rect_scale = Vector2( 0.0939789, 0.566877 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBtn" type="Button" parent="HUD/EndPanel"]
+margin_left = 27.6563
+margin_top = 26.5101
+margin_right = 75.6563
+margin_bottom = 46.5101
+rect_scale = Vector2( 0.0833333, 0.516779 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="change_health" from="EnemyDV" to="." method="_on_EnemyDV_change_health"]
 [connection signal="dead" from="EnemyDV" to="." method="_on_EnemyDV_dead"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
-[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_Bullet_body_entered"]
-[connection signal="v_apple" from="Bullet" to="." method="_on_Bullet_v_apple"]
-[connection signal="screen_exited" from="Bullet/NotifyVisibility" to="Bullet" method="_on_NotifyVisibility_screen_exited"]
+[connection signal="button_up" from="HUD/EndPanel/NextBtn" to="." method="_on_NextBtn_button_up"]

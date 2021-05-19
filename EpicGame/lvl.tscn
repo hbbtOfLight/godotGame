@@ -27,7 +27,7 @@ scale = Vector2( 0.199999, 1 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 516.721, -76.6173 )
+position = Vector2( 518.721, -80.6173 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D3"]
 position = Vector2( 142.544, 553.248 )
@@ -53,10 +53,7 @@ scale = Vector2( 0.199999, 1 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
-position = Vector2( 236.979, -293.997 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 228.979, -294.997 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D5"]
 position = Vector2( 229.544, 576.248 )
@@ -71,7 +68,8 @@ shape = SubResource( 1 )
 [node name="EnemyM" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 67.5466, 513.901 )
+position = Vector2( 110.547, 504.901 )
+scale = Vector2( 0.899828, 0.784383 )
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 3.0

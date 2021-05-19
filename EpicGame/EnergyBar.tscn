@@ -14,7 +14,6 @@ extra_spacing_bottom = 4
 font_data = SubResource( 1 )
 
 [node name="EnergyBar" instance=ExtResource( 1 )]
-margin_right = 352.0
 margin_bottom = 40.0
 
 [node name="Count" parent="." index="0"]

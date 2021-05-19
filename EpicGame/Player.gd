@@ -4,6 +4,10 @@ signal dead
 signal health_changed
 #class_name Player
 export var is_on_fly_lvl = false
+const SPEED = 200
+const FLOOR = Vector2(0, -1)
+const GRAVITY = 970
+const JUMP_POWER = 500
 #onready var player_vars = get_node("/root/PlayerGlVars")
 var speed = 300
 var maxLives = 5
@@ -36,13 +40,17 @@ func _ready():
 	
 func _move_x(delta):
 	if (Input.is_action_pressed("ui_left")):
-		velocity.x -= speed
+		velocity.x = -SPEED
 		sprite.flip_h = true
 		#$BulletPos.position.x = abs($BulletPos.position.x) * (-1)
 	
-	if (Input.is_action_pressed("ui_right")):
-		velocity.x += speed
+	elif (Input.is_action_pressed("ui_right")):
+		velocity.x = SPEED
 		sprite.flip_h = false
+	
+	else: velocity.x = 0
+	
+	
 		#$BulletPos.position.x = abs($BulletPos.position.x)
 		
 		
@@ -50,24 +58,24 @@ func _jump():
 	if(is_on_floor()):
 		jumps_left = 2	
 	if(Input.is_action_just_pressed("jump") and jumps_left > 0):
-		if velocity.y > 0: 		velocity.y = 0
-		velocity.y -= jumpForce
+#		if velocity.y > 0: 		velocity.y = 0
+		velocity.y = -JUMP_POWER
 		jumps_left -= 1
-	if(Input.is_action_just_released("jump") and velocity.y < 0):
-		velocity.y = 0
+#	if(Input.is_action_just_released("jump") and velocity.y < 0):
+#		velocity.y = 0
 		
 		
-func _friction():
-	var isRunning = (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ul_right"))
-	if(isRunning):
-		velocity.x *= running_friction
-	else:
-		velocity.x *= stopping_friction
+#func _friction():
+#	var isRunning = (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ul_right"))
+#	if(isRunning):
+#		velocity.x *= running_friction
+#	else:
+#		velocity.x *= stopping_friction
 		
-func _gravity():
-	if not isDashing: velocity.y += gravity
-	if (velocity.y > jumpForce):
-		velocity.y = gravity
+func _gravity(delta):
+	if not isDashing: velocity.y += (GRAVITY * delta)
+#	if (velocity.y > jumpForce):
+#		velocity.y = gravity
 	
 func _dash():
 	var can_dash: bool = false
@@ -135,22 +143,20 @@ func _change_health(value):
 	
 func _process(delta):
 	#Физику поадекватнее переписать
-	#velocity.y += gravity
 	if (can_move):
 		if not is_on_fly_lvl:
 			_move_x(delta)
 			_jump()
-			_friction()
-			_gravity()
+#			_friction()#			
 			_dash()
 			_crouch()
 			_stand_up()					
-			position += velocity * delta		
-			velocity = move_and_slide(velocity, Vector2.UP)
-			velocity = Vector2()			
+#			position += velocity * delta		
+			_gravity(delta)
+			velocity = move_and_slide(velocity, FLOOR)		
 		else:
 			_fly()
-			position += velocity * delta
+			#position += velocity * delta
 			velocity = Vector2()
 		_shoot()
 		var screen_size = get_viewport_rect().size	

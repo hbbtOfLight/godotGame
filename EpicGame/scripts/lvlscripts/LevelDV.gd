@@ -43,3 +43,7 @@ func _on_Player_health_changed(health):
 
 func _on_EnemyDV_change_health(health):
 	_update_health(health, $HUD/GUI/HBoxContainer/Bars/EnergyBar/Count/Background/Number, $HUD/GUI/HBoxContainer/Bars/EnergyBar/TextureProgress)
+
+
+func _on_NextBtn_button_up():
+	SceneChanger.goto_scene("res://lvl.tscn")

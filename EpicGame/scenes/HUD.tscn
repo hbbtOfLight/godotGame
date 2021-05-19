@@ -4,7 +4,7 @@
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 29
 font_data = ExtResource( 1 )
 
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 0.037424, 0.186611 )
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,6 +42,9 @@ margin_right = 52.625
 margin_bottom = 46.0067
 rect_scale = Vector2( 0.0939789, 0.566877 )
 text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuBtn" type="Button" parent="EndPanel"]
 margin_left = 27.6563

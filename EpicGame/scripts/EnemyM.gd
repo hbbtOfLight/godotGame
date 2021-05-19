@@ -30,7 +30,14 @@ func _death():
 func _process(delta):
 	if health == 0:
 		emit_signal("dead")
-
+		
+func _change_health(value):	
+	health += value
+	if health < 0:
+		health = 0
+	if health > max_health:
+		health = max_health		
+	emit_signal("change_health", health)
 
 func _on_EnemyM_dead():
 	_death() # Replace with function body.
