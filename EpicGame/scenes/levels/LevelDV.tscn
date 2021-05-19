@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/lvlscripts/LevelDV.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EvilDV.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dedus.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Bullet.gd" type="Script" id=5]
+[ext_resource path="res://textures/chalk_2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.8921, 71.1636 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27.9096, 48.0602 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 26, 8.41446 )
+
+[node name="LevelDV" type="Node"]
+script = ExtResource( 2 )
+
+[node name="EnemyDV" parent="." instance=ExtResource( 3 )]
+position = Vector2( 904, 144 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 61.4285, 313.537 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( -3.14919, 0.660706 )
+scale = Vector2( 0.399967, 0.450648 )
+texture = ExtResource( 4 )
+
+[node name="StandCollision" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0.894882, 2.14984 )
+scale = Vector2( 0.832538, 0.673176 )
+shape = SubResource( 1 )
+
+[node name="CrouchCollision" type="CollisionShape2D" parent="Player"]
+position = Vector2( 2.45441, 24.8639 )
+rotation = -1.5708
+shape = SubResource( 2 )
+disabled = true
+
+[node name="UpperRayCast" type="RayCast2D" parent="Player"]
+position = Vector2( 0.227264, 49.3727 )
+rotation = 3.14159
+scale = Vector2( 7.74477, 1.67896 )
+enabled = true
+
+[node name="BulletPos" type="Position2D" parent="Player"]
+position = Vector2( -32.2906, 0.373535 )
+
+[node name="Bullet" type="Area2D" parent="."]
+position = Vector2( 1045, 90 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Bullet"]
+position = Vector2( 34.5, 2.50002 )
+rotation = 0.872665
+scale = Vector2( 0.0698835, 0.0657493 )
+texture = ExtResource( 6 )
+
+[node name="CollisionBullet" type="CollisionShape2D" parent="Bullet"]
+position = Vector2( 40, 6 )
+shape = SubResource( 3 )
+
+[node name="NotifyVisibility" type="VisibilityNotifier2D" parent="Bullet"]
+position = Vector2( 39.5, 5 )
+scale = Vector2( 2.95, 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+[connection signal="change_health" from="EnemyDV" to="." method="_on_EnemyDV_change_health"]
+[connection signal="dead" from="EnemyDV" to="." method="_on_EnemyDV_dead"]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_Bullet_body_entered"]
+[connection signal="v_apple" from="Bullet" to="." method="_on_Bullet_v_apple"]
+[connection signal="screen_exited" from="Bullet/NotifyVisibility" to="Bullet" method="_on_NotifyVisibility_screen_exited"]

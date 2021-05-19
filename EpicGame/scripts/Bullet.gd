@@ -5,6 +5,7 @@ export var direction = 1
 const speed = 500
 var damage = 10
 var vel = Vector2()
+signal v_apple
 class_name bullet
 #const Player = preload("res://Player.gd")
 
@@ -31,7 +32,8 @@ func _on_NotifyVisibility_screen_exited():
 func _on_Bullet_body_entered(body):
 #	var enemy = body as EnemyBoss
 	if "Enemy" in body.name:
-		body.health -= damage
+		body._change_health(-damage)
+		print("health")
 		print(body.health)
 	if body.name == "Player":
 		return
@@ -41,4 +43,6 @@ func _on_Bullet_body_entered(body):
 	queue_free()
 
 
-
+func _on_Bullet_area_entered(area):
+	emit_signal("v_apple")
+	queue_free()

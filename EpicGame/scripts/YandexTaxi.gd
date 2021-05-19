@@ -27,5 +27,18 @@ func _on_VisibilityNotifier_screen_exited():
 	queue_free()
 
 
-func _on_YandexTaxi_body_entered(body):
-	pass # Replace with function body.
+func _on_YandexTaxi_body_entered(body):	
+	if body.name == "Player":
+		body._change_health(-damage)
+		print("player entered")
+	if "Enemy" in body.name:
+		print("enemy entered")
+		return
+	else: print ("chalk en")
+	queue_free()
+		
+	
+
+
+#func _on_YandexTaxi_area_entered(area):
+#	queue_free()

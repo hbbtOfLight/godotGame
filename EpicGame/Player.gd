@@ -1,14 +1,17 @@
 extends KinematicBody2D
 
 signal dead
-class_name Player
-export var is_on_fly_lvl = true
+signal health_changed
+#class_name Player
+export var is_on_fly_lvl = false
+#onready var player_vars = get_node("/root/PlayerGlVars")
 var speed = 300
 var maxLives = 5
-var health = 50
+var max_health = 100 # потом заменить на глобальную, если получится
+var health = max_health
 var score = 0
 var damage = 20
-var jumpForce : int = 10000
+var jumpForce : int = 8000
 var gravity : int = 450
 #var isOnFloor = true
 var isDashing = false
@@ -23,7 +26,7 @@ onready var sprite = $Sprite
 onready var stand_collision = $StandCollision
 onready var crouch_collision = $CrouchCollision
 var stand_texture = preload("res://dedus.png")
-var crawl_texture = preload("res://dedus_croaching.png")
+#var crawl_texture = preload("res://dedus_croaching.png")
 var bullet = preload("res://scenes/Bullet.tscn")
 export var can_move = true
 
@@ -121,29 +124,14 @@ func _fly():
 		velocity.y -= speed
 	if Input.is_action_pressed("fly_down"):
 		velocity.y += speed
-
-#func _crouch():
-#	if Input.is_action_pressed("crouch") and isStands:
-#		stand_collision.disabled = true
-#		crouch_collision.disabled = false
-#		sprite.transform.rotated(PI/2)
-#		#sprite.texture = crawl_texture
-#		isStands = false
-#		isCrouches = true
-#
-#func _stand_up():
-#	if (Input.is_action_just_released("crouch") and isCrouches):
-#		stand_collision.disabled = false
-#		crouch_collision.disabled = true
-#	#	sprite.texture = stand_texture
-#		sprite.transform.rotated(-PI/2)
-#		isCrouches = false
-#		isStands = true
 		
-		
-		
-		
-		
+func _change_health(value):	
+	health += value
+	if health < 0:
+		health = 0
+	if health > max_health:
+		health = max_health		
+	emit_signal("health_changed", health)
 	
 func _process(delta):
 	#Физику поадекватнее переписать
@@ -168,8 +156,6 @@ func _process(delta):
 		var screen_size = get_viewport_rect().size	
 		position.x = clamp(position.x, 0, screen_size.x)
 		position.y = clamp(position.y, 0, screen_size.y)
-		
-	
 		
 	if (health <= 0):
 		emit_signal("dead")

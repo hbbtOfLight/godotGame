@@ -27,7 +27,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_OhrBullet_body_entered(body):
 	if (body.name == "Player"):
-		body.health -= damage
+		body._change_health(-damage)
 	if (body.name == "EnemySequrity"):
 		return
 	queue_free()

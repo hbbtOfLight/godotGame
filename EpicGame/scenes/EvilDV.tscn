@@ -7,19 +7,28 @@
 extents = Vector2( 107, 47 )
 
 [node name="EnemyDV" type="KinematicBody2D"]
-position = Vector2( 794, -42 )
+position = Vector2( 887, 113 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 122, 137 )
+position = Vector2( 0, 17 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TaxiPos" type="Position2D" parent="."]
-position = Vector2( 217, 109 )
+position = Vector2( 95, -11 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 122, 121 )
+position = Vector2( 0, 1 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

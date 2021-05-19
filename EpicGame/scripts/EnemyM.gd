@@ -1,9 +1,11 @@
 extends StaticBody2D
 class_name EnemyBoss
 signal dead
+signal change_health
 
 var book_to_throw = preload ("res://scenes/Aitch.tscn")
-var health = 100
+var max_health = 100
+var health = max_health
 var catch_frase = "Так как я самый простой и понятный, скажите что я вам сейчас скажу? \n ПЕРЕСДАЧА!!!"
 #var velocity_for_book = Vector2()
 

@@ -1,6 +1,7 @@
 extends StaticBody2D
 
-var health = 300
+var max_health = 100
+var health = max_health
 var friend1
 var friend2
 var friend3

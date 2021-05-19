@@ -27,5 +27,5 @@ func _on_EnemyTimer_timeout():
 
 func _on_Player_dead():
 	$EnemyTimer.stop()
-	$HUD/WindowDialog.popup()
+	$HUD/EndWindow.popup()
 	$Player.can_move = false

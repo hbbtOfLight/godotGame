@@ -54,14 +54,17 @@ shape = SubResource( 1 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 position = Vector2( 236.979, -293.997 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D5"]
-position = Vector2( 142.544, 553.248 )
+position = Vector2( 229.544, 576.248 )
 scale = Vector2( 0.132466, 0.129448 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-position = Vector2( 142.544, 554.139 )
+position = Vector2( 229.544, 577.139 )
 scale = Vector2( 0.199999, 1 )
 shape = SubResource( 1 )
 

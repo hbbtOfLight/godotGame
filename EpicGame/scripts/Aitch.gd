@@ -35,6 +35,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Aitch_body_entered(body):
 	if (body.name == "Player"):
-		body.health -= damage
+		body._change_health(-damage)
 		queue_free()
 		print(body.health)
