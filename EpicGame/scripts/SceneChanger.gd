@@ -1,5 +1,12 @@
 extends Node
 
+var player_max_health = 100
+
+
+
+
+
+
 var current_scene = null
 
 func _ready():

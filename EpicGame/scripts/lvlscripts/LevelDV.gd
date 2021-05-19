@@ -46,4 +46,4 @@ func _on_EnemyDV_change_health(health):
 
 
 func _on_NextBtn_button_up():
-	SceneChanger.goto_scene("res://lvl.tscn")
+	Global.goto_scene("res://lvl.tscn")

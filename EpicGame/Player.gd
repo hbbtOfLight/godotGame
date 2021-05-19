@@ -11,17 +11,17 @@ const JUMP_POWER = 500
 #onready var player_vars = get_node("/root/PlayerGlVars")
 var speed = 300
 var maxLives = 5
-var max_health = 100 # потом заменить на глобальную, если получится
+var max_health = Global.player_max_health # потом заменить на глобальную, если получится
 var health = max_health
 var score = 0
 var damage = 20
-var jumpForce : int = 8000
-var gravity : int = 450
+#var jumpForce : int = 8000
+#var gravity : int = 450
 #var isOnFloor = true
 var isDashing = false
 var velocity = Vector2()
-var running_friction = 0.9
-var stopping_friction = 0.5
+#var running_friction = 0.9
+#var stopping_friction = 0.5
 var jumps_left = 2
 var isStands = true
 var isCrouches = false
@@ -153,12 +153,14 @@ func _process(delta):
 			_stand_up()					
 #			position += velocity * delta		
 			_gravity(delta)
-			velocity = move_and_slide(velocity, FLOOR)		
+			velocity = move_and_slide(velocity, FLOOR)	
+			
 		else:
 			_fly()
-			#position += velocity * delta
+			position += velocity * delta
 			velocity = Vector2()
 		_shoot()
+			
 		var screen_size = get_viewport_rect().size	
 		position.x = clamp(position.x, 0, screen_size.x)
 		position.y = clamp(position.y, 0, screen_size.y)
