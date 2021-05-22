@@ -1,39 +1,118 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://dedus.png" type="Texture" id=2]
+[ext_resource path="res://textures/adventure_girl/png/Idle (1).png" type="Texture" id=2]
+[ext_resource path="res://textures/adventure_girl/png/Idle (5).png" type="Texture" id=3]
+[ext_resource path="res://textures/adventure_girl/png/Idle (7).png" type="Texture" id=4]
+[ext_resource path="res://textures/adventure_girl/png/Idle (3).png" type="Texture" id=5]
+[ext_resource path="res://textures/adventure_girl/png/Idle (9).png" type="Texture" id=6]
+[ext_resource path="res://textures/adventure_girl/png/Idle (8).png" type="Texture" id=7]
+[ext_resource path="res://textures/adventure_girl/png/Run (6).png" type="Texture" id=8]
+[ext_resource path="res://textures/adventure_girl/png/Jump (1).png" type="Texture" id=9]
+[ext_resource path="res://textures/adventure_girl/png/Jump (4).png" type="Texture" id=10]
+[ext_resource path="res://textures/adventure_girl/png/Idle (10).png" type="Texture" id=11]
+[ext_resource path="res://textures/adventure_girl/png/Run (5).png" type="Texture" id=12]
+[ext_resource path="res://textures/adventure_girl/png/Run (1).png" type="Texture" id=13]
+[ext_resource path="res://textures/adventure_girl/png/Run (8).png" type="Texture" id=14]
+[ext_resource path="res://textures/adventure_girl/png/Run (7).png" type="Texture" id=15]
+[ext_resource path="res://textures/adventure_girl/png/Jump (2).png" type="Texture" id=16]
+[ext_resource path="res://textures/adventure_girl/png/Jump (5).png" type="Texture" id=17]
+[ext_resource path="res://textures/adventure_girl/png/Jump (6).png" type="Texture" id=18]
+[ext_resource path="res://textures/adventure_girl/png/Jump (7).png" type="Texture" id=19]
+[ext_resource path="res://textures/adventure_girl/png/Idle (2).png" type="Texture" id=20]
+[ext_resource path="res://textures/adventure_girl/png/Jump (8).png" type="Texture" id=21]
+[ext_resource path="res://textures/adventure_girl/png/Jump (3).png" type="Texture" id=22]
+[ext_resource path="res://textures/adventure_girl/png/Jump (9).png" type="Texture" id=23]
+[ext_resource path="res://textures/adventure_girl/png/Jump (10).png" type="Texture" id=24]
+[ext_resource path="res://textures/adventure_girl/png/Slide (1).png" type="Texture" id=25]
+[ext_resource path="res://textures/adventure_girl/png/Slide (2).png" type="Texture" id=26]
+[ext_resource path="res://textures/adventure_girl/png/Idle (6).png" type="Texture" id=27]
+[ext_resource path="res://textures/adventure_girl/png/Run (3).png" type="Texture" id=28]
+[ext_resource path="res://textures/adventure_girl/png/Run (4).png" type="Texture" id=29]
+[ext_resource path="res://textures/adventure_girl/png/Slide (3).png" type="Texture" id=30]
+[ext_resource path="res://textures/adventure_girl/png/Run (2).png" type="Texture" id=31]
+[ext_resource path="res://textures/adventure_girl/png/Idle (4).png" type="Texture" id=32]
+[ext_resource path="res://textures/adventure_girl/png/Dead (4).png" type="Texture" id=33]
+[ext_resource path="res://textures/adventure_girl/png/Dead (1).png" type="Texture" id=34]
+[ext_resource path="res://textures/adventure_girl/png/Slide (5).png" type="Texture" id=35]
+[ext_resource path="res://textures/adventure_girl/png/Dead (3).png" type="Texture" id=36]
+[ext_resource path="res://textures/adventure_girl/png/Slide (4).png" type="Texture" id=37]
+[ext_resource path="res://textures/adventure_girl/png/Dead (2).png" type="Texture" id=38]
+[ext_resource path="res://textures/adventure_girl/png/Dead (8).png" type="Texture" id=39]
+[ext_resource path="res://textures/adventure_girl/png/Dead (9).png" type="Texture" id=40]
+[ext_resource path="res://textures/adventure_girl/png/Dead (7).png" type="Texture" id=41]
+[ext_resource path="res://textures/adventure_girl/png/Dead (5).png" type="Texture" id=42]
+[ext_resource path="res://textures/adventure_girl/png/Dead (6).png" type="Texture" id=43]
+[ext_resource path="res://textures/adventure_girl/png/Dead (10).png" type="Texture" id=44]
+[ext_resource path="res://textures/adventure_girl/png/Shoot (2).png" type="Texture" id=45]
+[ext_resource path="res://textures/adventure_girl/png/Shoot (1).png" type="Texture" id=46]
+[ext_resource path="res://textures/adventure_girl/png/Shoot (3).png" type="Texture" id=47]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.8921, 71.1636 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 20 ), ExtResource( 5 ), ExtResource( 32 ), ExtResource( 3 ), ExtResource( 27 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ) ],
+"loop": false,
+"name": "dead",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 37 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 27.9096, 48.0602 )
+extents = Vector2( 32.8921, 71.1636 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 27.9096, 38.0249 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 64.4285, 549.537 )
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.14919, -31.3394 )
-scale = Vector2( 0.399967, 0.450648 )
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.3508, -32.8394 )
+scale = Vector2( 0.183118, 0.205261 )
+frames = SubResource( 1 )
+animation = "shoot"
 
 [node name="StandCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 1.89488, -30.8502 )
 scale = Vector2( 0.832538, 0.673176 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 4.45441, -11.1361 )
+position = Vector2( 2.45441, -11.1361 )
 rotation = -1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="UpperRayCast" type="RayCast2D" parent="."]
-position = Vector2( 2.22726, 17.3726 )
+position = Vector2( -0.772743, 6.37262 )
 rotation = 3.14159
-scale = Vector2( 7.74477, 1.67896 )
+scale = Vector2( 4.02477, 1.51896 )
 enabled = true
 
 [node name="BulletPos" type="Position2D" parent="."]
-position = Vector2( -30.2906, -31.6265 )
+position = Vector2( 68.7094, -37.6265 )

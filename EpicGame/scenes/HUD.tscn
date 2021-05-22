@@ -12,6 +12,8 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
+margin_top = 3.0
+margin_bottom = 96.0
 
 [node name="EndPanel" type="Panel" parent="."]
 visible = false
@@ -56,3 +58,4 @@ text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_up" from="EndPanel/NextBtn" to="." method="_on_NextBtn_button_up"]

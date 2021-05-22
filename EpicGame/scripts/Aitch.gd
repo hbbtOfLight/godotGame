@@ -1,28 +1,23 @@
 extends Area2D
 class_name BookOfPunishment
 export var init_vector = Vector2()
-export var velocity = Vector2(-1, -1)
 var speed = 45
 var damage = 10
+var rotation_speed = 10
 
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func _setup(vector):
+	init_vector = vector
 
 
 func _process(delta):
-	if(velocity.length()<=0.00001):
-		velocity = init_vector
-	velocity.x *= (speed * delta)
-	velocity.y *= (speed * delta)
-	translate(velocity.normalized())
+	position += init_vector.normalized() * speed * delta
+	rotation_degrees += rotation_speed * delta
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -34,7 +29,13 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Aitch_body_entered(body):
-	if (body.name == "Player"):
+	if body.is_in_group("Player"):
 		body._change_health(-damage)
 		queue_free()
-		print(body.health)
+		
+
+
+func _on_Thermos_body_entered(body):
+	if body.is_in_group("Player"):
+		body._change_health(-damage)
+		queue_free()

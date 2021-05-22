@@ -1,12 +1,6 @@
 extends Node
 
 var player_max_health = 100
-
-
-
-
-
-
 var current_scene = null
 
 func _ready():
@@ -32,6 +26,10 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+	
+func _update_health(health, barnumber, barvalue):
+	barnumber.text = str(health)
+	barvalue.value = health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

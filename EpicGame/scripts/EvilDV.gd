@@ -43,9 +43,10 @@ func _dead():
 func _changedir():
 #	print(get_floor_velocity().y)
 #	print(position)
-	if position.y - ($Sprite.texture.get_height())/2 <= 0:
+	var delpos = $Sprite.texture.get_height()* $Sprite.scale.y/2
+	if position.y - delpos <= 0:
 		direction = 1
-	if position.y + ($Sprite.texture.get_height())/2 >= get_viewport_rect().size.y	:
+	if position.y + delpos >= get_viewport_rect().size.y	:
 		direction = -1
 	
 func _change_health(value):	

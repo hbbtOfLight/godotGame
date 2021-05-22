@@ -6,7 +6,8 @@ signal change_health
 var book_to_throw = preload ("res://scenes/Aitch.tscn")
 var max_health = 100
 var health = max_health
-var catch_frase = "Так как я самый простой и понятный, скажите что я вам сейчас скажу? \n ПЕРЕСДАЧА!!!"
+var lose_catchfrase = "Так как я самый простой и понятный,\n скажите что я вам сейчас скажу? ПЕРЕСДАЧА!!!"
+var win_catchfrase = "Садитесь, вам двойка!"
 #var velocity_for_book = Vector2()
 
 
@@ -14,13 +15,12 @@ func _ready():
 	$ShootTimer.start()
 	
 func _shoot(direction):
-	print("shoot")
 	var books = book_to_throw.instance()
 	books.position = $Aitch_pos.global_position
-	books.velocity = direction
+	books._setup(direction)
 	get_parent().add_child(books) 
-	books.velocity = direction
-	books.init_vector = direction
+#	books.velocity = direction
+#	books.init_vector = direction
 
 func _death():
 	$ShootTimer.stop()
@@ -38,9 +38,7 @@ func _change_health(value):
 	if health > max_health:
 		health = max_health		
 	emit_signal("change_health", health)
-
-func _on_EnemyM_dead():
-	_death() # Replace with function body.
+	
 
 
 func _on_ShootTimer_timeout():

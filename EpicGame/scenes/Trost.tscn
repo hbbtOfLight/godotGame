@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Aitch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/trost.png" type="Texture" id=2]
+
+[node name="Trost" instance=ExtResource( 1 )]
+scale = Vector2( 0.76, 1.08 )
+
+[node name="AitchBook" parent="." index="0"]
+position = Vector2( -0.235352, -8.65096 )
+scale = Vector2( 0.0471925, 0.0895198 )
+texture = ExtResource( 2 )
+
+[node name="AitchNotifier" parent="." index="2"]
+scale = Vector2( 0.647632, 3.74564 )

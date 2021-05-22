@@ -34,25 +34,31 @@ var stand_texture = preload("res://dedus.png")
 var bullet = preload("res://scenes/Bullet.tscn")
 export var can_move = true
 
+
 func _ready():
 	print(name)
-	pass # Replace with function body.
+	$Sprite.animation = "idle"
+	
 	
 func _move_x(delta):
 	if (Input.is_action_pressed("ui_left")):
 		velocity.x = -SPEED
 		sprite.flip_h = true
-		#$BulletPos.position.x = abs($BulletPos.position.x) * (-1)
+		if (not isCrouches):
+			$Sprite.animation = "run"
+		$BulletPos.position.x = abs($BulletPos.position.x) * (-1)
 	
 	elif (Input.is_action_pressed("ui_right")):
 		velocity.x = SPEED
 		sprite.flip_h = false
+		if (not isCrouches):
+			$Sprite.animation = "run"
+		$BulletPos.position.x = abs($BulletPos.position.x)
 	
-	else: velocity.x = 0
-	
-	
-		#$BulletPos.position.x = abs($BulletPos.position.x)
-		
+	else: 
+		velocity.x = 0
+		if (is_on_floor() and not isCrouches):
+			$Sprite.animation = "idle"		
 		
 func _jump():
 	if(is_on_floor()):
@@ -61,6 +67,7 @@ func _jump():
 #		if velocity.y > 0: 		velocity.y = 0
 		velocity.y = -JUMP_POWER
 		jumps_left -= 1
+		$Sprite.animation = "jump"
 #	if(Input.is_action_just_released("jump") and velocity.y < 0):
 #		velocity.y = 0
 		
@@ -92,28 +99,45 @@ func _dash():
 
 func _crouch():
 	if Input.is_action_pressed("crouch") and isStands:
-		print(sprite.texture.get_height())
+		#print(sprite.texture.get_height())
+		$Sprite.animation = "crouch"
 		#move_local_y((SCALE_MODIFIER/2)/sprite.texture.get_height())
+		isStands = false
+		isCrouches = true	
+		stand_collision.disabled = true
+		crouch_collision.disabled = false			
 		_crawl()
 
 func _crawl():
-	sprite.scale.y /= SCALE_MODIFIER
-	stand_collision.scale.y /= SCALE_MODIFIER
-	sprite.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
-	stand_collision.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
-	isStands = false
-	isCrouches = true
+	stand_collision.disabled = true
+	crouch_collision.disabled = false	
+#	
+	#	sprite.scale.y /= SCALE_MODIFIER
+#	stand_collision.scale.y /= SCALE_MODIFIER
+#	sprite.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
+#	stand_collision.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
+	
+	$Sprite.animation = "crouch"
 
 
 func _stand_up():
-	if not Input.is_action_pressed("crouch") and isCrouches and not $UpperRayCast.is_colliding() :
-		sprite.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
-		stand_collision.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
-		sprite.scale.y *= SCALE_MODIFIER
-		stand_collision.scale.y *= SCALE_MODIFIER		
-		isCrouches = false
-		isStands = true
-		print($UpperRayCast.is_colliding())
+	print("colliding"+str($UpperRayCast.is_colliding()))
+	print("crouchpressed:"+str(Input.is_action_pressed("crouch")))
+	print("crouch:"+str(isCrouches))
+	if  not (Input.is_action_pressed("crouch")) and isCrouches:
+		if not $UpperRayCast.is_colliding() :
+			stand_collision.disabled = false
+			crouch_collision.disabled = true
+#			stand_collision.disabled = false
+#			crouch_collision.disabled = true		
+#		sprite.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
+#			stand_collision.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
+#		sprite.scale.y *= SCALE_MODIFIER
+#			stand_collision.scale.y *= SCALE_MODIFIER		
+			isCrouches = false
+			isStands = true
+			$Sprite.animation = "Idle"
+#			print($UpperRayCast.is_colliding())
 		if($UpperRayCast.is_colliding()):			
 			_crawl()
 			
@@ -126,6 +150,7 @@ func _shoot():
 			bullets.direction = 1
 		else:
 			bullets.direction = -1
+		$Sprite.animation = "shoot"
 			
 func _fly():
 	if (Input.is_action_pressed("fly_up")):
@@ -166,7 +191,8 @@ func _process(delta):
 		position.y = clamp(position.y, 0, screen_size.y)
 		
 	if (health <= 0):
-		emit_signal("dead")
+		$Sprite.animation = "dead"
+		emit_signal("dead")		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
