@@ -1,5 +1,6 @@
 extends Node
 
+export var scene_name = "DV"
 var taxi_value = 20
 onready var health_progress = $HUD/GUI/HBoxContainer/LifeBar/TextureProgress
 onready var health_value = $HUD/GUI/HBoxContainer/LifeBar/Count/Background/Number
@@ -12,12 +13,13 @@ func _ready():
 	$Player.is_on_fly_lvl = true
 	$HUD._set_max_value($Player.max_health, health_progress, health_value)
 	$HUD._set_max_value($EnemyDV.max_health, enemy_progress, enemy_value)	
+	Global.current_scene_name = scene_name
 		
 
 
 func _on_EnemyDV_dead():
 	$EnemyDV._dead()
-	$HUD/EndPanel/CatchLabel.text = $EnemyDV.win_catchfraze
+	$HUD/EndPanel/CatchLabel.text = $EnemyDV.win_catchfraze	
 	$HUD/EndPanel.visible = true
 
 
@@ -25,16 +27,8 @@ func _on_Player_dead():
 	$EnemyDV/Timer.stop()
 	$Player.can_move = false
 	$HUD/EndPanel/CatchLabel.text = $EnemyDV.lose_catchfraze
+	$HUD/EndPanel/NextBtn.text = "Replay"
 	$HUD/EndPanel.visible = true
-
-
-#func _on_Bullet_v_apple():
-#	$Player.score += taxi_value
-#	print ("score!")
-#	$HUD/GUI/HBoxContainer/Counters/BombCounter/Background/Number.text = str($Player.score)
-	
-	
-
 
 
 
@@ -47,4 +41,4 @@ func _on_EnemyDV_change_health(health):
 
 
 func _on_NextBtn_button_up():
-	Global.goto_scene("res://lvl.tscn")
+	Global.goto_scene()

@@ -18,7 +18,7 @@ texture = ExtResource( 2 )
 
 [node name="AitchCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1.44702, -7.52063 )
-scale = Vector2( 1, 4.68 )
+scale = Vector2( 4.88889, 6.53714 )
 shape = SubResource( 2 )
 
 [node name="AitchNotifier" type="VisibilityNotifier2D" parent="."]

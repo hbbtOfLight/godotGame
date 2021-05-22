@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+var is_won = false
+
 func _set_max_value(value, bar, number):
 	bar.max_value = value
 	bar.value = value
@@ -16,4 +18,19 @@ func _ready():
 
 
 func _on_NextBtn_button_up():
-	Global.goto_scene("res://lvl.tscn")
+	if (is_won):
+		Global.goto_scene()
+	else:
+		Global.reload_scene()
+
+
+func _on_PauseBtn_button_down():
+	get_tree().paused = true
+
+
+func _on_PlayBtn_button_down():
+	get_tree().paused = false
+
+
+func _on_MenuBtn_button_up():
+	pass # Replace with function body.

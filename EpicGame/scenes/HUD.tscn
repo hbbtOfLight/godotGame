@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://textures/pause.png" type="Texture" id=5]
+[ext_resource path="res://textures/play.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
 [node name="HUD" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
@@ -58,4 +65,34 @@ text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PauseBtn" type="Button" parent="."]
+anchor_left = 0.956
+anchor_top = 0.952
+anchor_right = 0.956
+anchor_bottom = 0.952
+margin_left = -22.944
+margin_top = -28.2
+margin_right = 552.056
+margin_bottom = 544.8
+rect_scale = Vector2( 0.11265, 0.0931984 )
+custom_fonts/font = SubResource( 2 )
+icon = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtn" type="Button" parent="."]
+margin_left = 884.0
+margin_top = 544.0
+margin_right = 1453.0
+margin_bottom = 1114.0
+rect_scale = Vector2( 0.108694, 0.0937894 )
+icon = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="EndPanel/NextBtn" to="." method="_on_NextBtn_button_up"]
+[connection signal="button_up" from="EndPanel/MenuBtn" to="." method="_on_MenuBtn_button_up"]
+[connection signal="button_down" from="PauseBtn" to="." method="_on_PauseBtn_button_down"]
+[connection signal="button_down" from="PlayBtn" to="." method="_on_PlayBtn_button_down"]

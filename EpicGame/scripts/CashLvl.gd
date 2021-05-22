@@ -1,5 +1,6 @@
 extends Node
 
+export var scene_name = "Cash"
 onready var health_progress = $HUD/GUI/HBoxContainer/LifeBar/TextureProgress
 onready var health_value = $HUD/GUI/HBoxContainer/LifeBar/Count/Background/Number
 onready var enemy_progress = $HUD/GUI/HBoxContainer/EnergyBar/TextureProgress
@@ -16,11 +17,13 @@ func _ready():
 	$Player.is_on_fly_lvl = false
 	$HUD._set_max_value($Player.max_health, health_progress, health_value)
 	$HUD._set_max_value($EnemyCash.max_health, enemy_progress, enemy_value)	
+	Global.current_scene_name = scene_name
 
 
 func _on_Player_dead():
 	$Player.can_move = false
 	$HUD/EndPanel/CatchLabel.text = $EnemyCash.lose_catchfrase
+	$HUD/EndPanel/NextBtn.text = "Replay"
 	$HUD/EndPanel.visible = true
 	$Player.can_move = false
 

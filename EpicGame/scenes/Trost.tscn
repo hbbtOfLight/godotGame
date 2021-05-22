@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Aitch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/trost.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Trost.gd" type="Script" id=3]
 
 [node name="Trost" instance=ExtResource( 1 )]
-scale = Vector2( 0.76, 1.08 )
+scale = Vector2( 0.76, 0.64 )
+script = ExtResource( 3 )
 
 [node name="AitchBook" parent="." index="0"]
 position = Vector2( -0.235352, -8.65096 )

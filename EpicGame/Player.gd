@@ -36,7 +36,6 @@ export var can_move = true
 
 
 func _ready():
-	print(name)
 	$Sprite.animation = "idle"
 	
 	
@@ -99,7 +98,6 @@ func _dash():
 
 func _crouch():
 	if Input.is_action_pressed("crouch") and isStands:
-		#print(sprite.texture.get_height())
 		$Sprite.animation = "crouch"
 		#move_local_y((SCALE_MODIFIER/2)/sprite.texture.get_height())
 		isStands = false
@@ -121,9 +119,9 @@ func _crawl():
 
 
 func _stand_up():
-	print("colliding"+str($UpperRayCast.is_colliding()))
-	print("crouchpressed:"+str(Input.is_action_pressed("crouch")))
-	print("crouch:"+str(isCrouches))
+#	print("colliding"+str($UpperRayCast.is_colliding()))
+#	print("crouchpressed:"+str(Input.is_action_pressed("crouch")))
+#	print("crouch:"+str(isCrouches))
 	if  not (Input.is_action_pressed("crouch")) and isCrouches:
 		if not $UpperRayCast.is_colliding() :
 			stand_collision.disabled = false

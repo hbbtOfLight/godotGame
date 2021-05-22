@@ -4,7 +4,7 @@ extends StaticBody2D
 signal change_health
 signal dead
 onready var thermos = preload("res://scenes/Thermos.tscn")
-export var rotate_speeds = [90.0, 80.0, 60.0]
+var rotate_speeds = [90.0, 80.0, 60.0]
 onready var pointers = [$Pointer, $Pointer2, $Pointer3]
 onready var rays = [$Pointer/RayCast2D, $Pointer2/RayCast2D, $Pointer3/RayCast2D]
 onready var things = [preload("res://scenes/Thermos.tscn"), preload("res://scenes/PascalABC.tscn"), preload("res://scenes/Trost.tscn")]

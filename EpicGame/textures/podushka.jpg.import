@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_with_labs.png-61cec24c0f23e381bcfe1b170a55683c.stex"
+path="res://.import/podushka.jpg-02340f89d24e26822d65e7703c0280d2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player_with_labs.png"
-dest_files=[ "res://.import/player_with_labs.png-61cec24c0f23e381bcfe1b170a55683c.stex" ]
+source_file="res://textures/podushka.jpg"
+dest_files=[ "res://.import/podushka.jpg-02340f89d24e26822d65e7703c0280d2.stex" ]
 
 [params]
 
