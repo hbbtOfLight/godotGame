@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Chicarego.tres" type="DynamicFont" id=1]
+
+[node name="FirstScene" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 92.0
+margin_top = 60.0
+margin_right = 228.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 1 )
+text = "First Scene
+"
