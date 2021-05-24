@@ -10,6 +10,7 @@ func _ready():
 	Global.prev_score = Global.player_score
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$GUI/HBoxContainer/ScoreCounter/Background/Number.text = str(Global.player_score)

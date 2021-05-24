@@ -41,7 +41,7 @@ func _deferred_goto_scene(scene_name):
 		"GraveLvl":
 			path = "res://scenes/levels/CashLvl.tscn"			
 		"Cash":
-			path = "res://scenes/levels/lvl.tscn"
+			path = "res://scenes/levels/DesertLvl.tscn"
 		"Mothveev":
 			path = "res://scenes/levels/SpaceLvl.tscn"
 		"DV":

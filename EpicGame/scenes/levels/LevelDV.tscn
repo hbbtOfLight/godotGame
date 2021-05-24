@@ -10,8 +10,8 @@
 script = ExtResource( 2 )
 
 [node name="death_star" type="Sprite" parent="."]
-position = Vector2( 514.318, 305.421 )
-scale = Vector2( 0.889735, 0.741789 )
+position = Vector2( 514.318, 300.124 )
+scale = Vector2( 0.889735, 0.755099 )
 texture = ExtResource( 5 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]

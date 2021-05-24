@@ -12,7 +12,7 @@ var lose_catchfrase = "Куда вас послать чтобы стало по
 var win_catchfrase = "Закройте ваш ноутбук"
 
 var angspeed = 100
-var max_health = 300
+var max_health = 250
 var health = max_health
 var is_dead = false
 var hit_score = 20

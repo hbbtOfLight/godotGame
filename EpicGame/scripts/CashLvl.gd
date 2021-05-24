@@ -36,6 +36,7 @@ func _on_EnemyCash_change_health(health):
 func _on_EnemyCash_dead():
 	$EnemyCash.is_dead = true
 	Global.is_curr_lvl_won = true
-	$HUD/EndPanel/CatchLabel.text = $EnemyCash.win_catchfrase
+	$HUD/EndPanel/CatchLabel.text = $EnemyCash.win_catchfrase + "\nВы победили финального босса!\nЖивите теперь с этим."
+	$HUD/EndPanel/NextBtn.text = "To start"
 	$HUD/EndPanel/NextBtn.visible = true
 	$HUD/EndPanel.visible = true

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal dead
 signal health_changed
+var played_fail = false
 export var is_on_fly_lvl = false
 const SPEED = 200
 const FLOOR = Vector2(0, -1)
@@ -153,6 +154,9 @@ func _process(delta):
 		_shoot()			
 	
 		if (position.y >= screen_size.x * 1.5):
+			if (not played_fail):
+				AudioNode._play_fall()
+				played_fail = true
 			_change_health(-max_health)
 
 		

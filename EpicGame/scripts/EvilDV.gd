@@ -23,7 +23,7 @@ var hit_score = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(name)
+	pass
 	
 func _fly(delta):
 	velocity.y = speed * delta * direction
