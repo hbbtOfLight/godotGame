@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platform_not_to_fail.png-6ecbcc46ec8feb642e5d399c1e3da955.stex"
+path="res://.import/valeryanka.jpg-88c7a5f5929a0f6c88b37cd8932746f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platform_not_to_fail.png"
-dest_files=[ "res://.import/platform_not_to_fail.png-6ecbcc46ec8feb642e5d399c1e3da955.stex" ]
+source_file="res://textures/valeryanka.jpg"
+dest_files=[ "res://.import/valeryanka.jpg-88c7a5f5929a0f6c88b37cd8932746f0.stex" ]
 
 [params]
 

@@ -15,6 +15,8 @@ func _ready():
 	$HUD._set_max_value($EnemyM.max_health, enemy_progress, enemy_value)	
 	$EnemyTimer.start()	
 	Global.current_scene_name = scene_name
+	Global.is_curr_lvl_won = false
+	
 
 
 func _aim():
@@ -30,9 +32,7 @@ func _on_Player_dead():
 	$EnemyTimer.stop()
 	$Player.can_move = false
 	$HUD/EndPanel/CatchLabel.text = $EnemyM.lose_catchfrase
-	$HUD/EndPanel/NextBtn.text = "Replay"
 	$HUD/EndPanel.visible = true
-	$Player.can_move = false
 
 
 func _on_Player_health_changed(health):
@@ -48,4 +48,6 @@ func _on_EnemyM_dead():
 	$EnemyM._death()
 	$HUD/EndPanel/CatchLabel.text = $EnemyM.win_catchfrase
 	$HUD/EndPanel.visible = true
-	$HUD.is_won = true
+	$HUD/EndPanel/NextBtn.visible = true
+	Global.is_curr_lvl_won = true
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@ size = 29
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 4 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -36,32 +39,51 @@ __meta__ = {
 [node name="CatchLabel" type="Label" parent="EndPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 10.2083
+margin_top = 1.84563
+margin_right = 518.208
+margin_bottom = 1.84563
 rect_scale = Vector2( 0.037424, 0.186611 )
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 1 )
-text = "10"
+text = "Наверное, я таки ничего не сдам("
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NextBtn" type="Button" parent="EndPanel"]
-margin_left = 10.625
-margin_top = 26.0067
-margin_right = 52.625
-margin_bottom = 46.0067
-rect_scale = Vector2( 0.0939789, 0.566877 )
+visible = false
+margin_left = 16.6146
+margin_top = 24.1611
+margin_right = 67.6146
+margin_bottom = 50.1611
+rect_scale = Vector2( 0.0960622, 0.365535 )
+custom_fonts/font = SubResource( 2 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuBtn" type="Button" parent="EndPanel"]
-margin_left = 27.6563
-margin_top = 26.5101
-margin_right = 75.6563
-margin_bottom = 46.5101
-rect_scale = Vector2( 0.0833333, 0.516779 )
+margin_left = 31.1459
+margin_top = 23.9933
+margin_right = 89.1459
+margin_bottom = 49.9933
+rect_scale = Vector2( 0.0833333, 0.322148 )
+custom_fonts/font = SubResource( 2 )
 text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReloadBtn" type="Button" parent="EndPanel"]
+margin_left = 3.0
+margin_top = 24.0
+margin_right = 71.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.0833333, 0.348994 )
+custom_fonts/font = SubResource( 2 )
+text = "Reload"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,7 +98,7 @@ margin_top = -28.2
 margin_right = 552.056
 margin_bottom = 544.8
 rect_scale = Vector2( 0.11265, 0.0931984 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 icon = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,5 +116,6 @@ __meta__ = {
 }
 [connection signal="button_up" from="EndPanel/NextBtn" to="." method="_on_NextBtn_button_up"]
 [connection signal="button_up" from="EndPanel/MenuBtn" to="." method="_on_MenuBtn_button_up"]
+[connection signal="button_up" from="EndPanel/ReloadBtn" to="." method="_on_ReloadBtn_button_up"]
 [connection signal="button_down" from="PauseBtn" to="." method="_on_PauseBtn_button_down"]
 [connection signal="button_down" from="PlayBtn" to="." method="_on_PlayBtn_button_down"]

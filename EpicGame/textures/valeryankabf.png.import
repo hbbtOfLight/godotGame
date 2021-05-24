@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dedus_croaching.png-676f317f34e65e89e7810265b93ba993.stex"
+path="res://.import/valeryankabf.png-f1b38e28b00b647807f8874029dfa55d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dedus_croaching.png"
-dest_files=[ "res://.import/dedus_croaching.png-676f317f34e65e89e7810265b93ba993.stex" ]
+source_file="res://textures/valeryankabf.png"
+dest_files=[ "res://.import/valeryankabf.png-f1b38e28b00b647807f8874029dfa55d.stex" ]
 
 [params]
 

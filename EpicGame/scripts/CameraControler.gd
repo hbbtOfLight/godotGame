@@ -1,10 +1,12 @@
-extends Area2D
+extends Camera2D
+
+onready var player = get_node("/root")
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var angspeed = 100
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +15,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Sprite.rotation_degrees += angspeed * delta
+ position.x = player.position.x
+ position.x = clamp(position.x, get_viewport_rect().size.x/2, get_viewport_rect().size.x*10 );

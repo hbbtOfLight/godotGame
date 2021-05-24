@@ -11,6 +11,8 @@ func _physics_process(delta):
 #	if (direction == -1):
 #		$Sprite.rotation_degrees = -130
 	translate(vel)
+	if (Global.is_curr_lvl_won):
+		queue_free()
 
 
 # Called when the node enters the scene tree for the first time.

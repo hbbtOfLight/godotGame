@@ -7,7 +7,7 @@ var damage = 10
 var vel = Vector2()
 signal v_apple
 class_name bullet
-#const Player = preload("res://Player.gd")
+
 
 func _physics_process(delta):
 	vel.x = speed * delta * direction
@@ -33,8 +33,7 @@ func _on_Bullet_body_entered(body):
 #	var enemy = body as EnemyBoss
 	if "Enemy" in body.name:
 		body._change_health(-damage)
-		print("health")
-		print(body.health)
+		Global.player_score += body.hit_score
 	if body.name == "Player":
 		return
 #	enemy = body as Player

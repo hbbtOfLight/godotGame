@@ -33,12 +33,14 @@ _global_script_class_icons={
 [application]
 
 config/name="ZeGame"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PlayerGlVars="*res://scripts/PLAYER_GL_VARS.gd"
 Global="*res://scripts/SceneChanger.gd"
+MusicSettings="*res://scripts/music_settings.gd"
+AudioNode="*res://scenes/AudioNode.tscn"
 
 [display]
 

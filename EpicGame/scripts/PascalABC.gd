@@ -16,6 +16,8 @@ func _setup(vector):
 func _process(delta):
 	position += init_vector.normalized() * speed * delta
 	rotation_degrees += rotation_speed * delta
+	if (Global.is_curr_lvl_won):
+		queue_free()
 
 
 func _on_VisibilityNotifier2D_screen_exited():

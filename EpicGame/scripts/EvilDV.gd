@@ -12,6 +12,7 @@ var taxi = preload ("res://scenes/YandexTaxi.tscn")
 var lose_catchfraze = "Я проверю ваши лабы через час"
 var win_catchfraze = "Вы молодец, но я разочарован("
 var is_alive = true
+var hit_score = 10
 
 
 

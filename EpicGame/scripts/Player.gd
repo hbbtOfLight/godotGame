@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 signal dead
 signal health_changed
-#class_name Player
 export var is_on_fly_lvl = false
 const SPEED = 200
 const FLOOR = Vector2(0, -1)
@@ -11,17 +10,12 @@ const JUMP_POWER = 500
 #onready var player_vars = get_node("/root/PlayerGlVars")
 var speed = 300
 var maxLives = 5
-var max_health = Global.player_max_health # потом заменить на глобальную, если получится
+var max_health = Global.player_max_health 
 var health = max_health
 var score = 0
 var damage = 20
-#var jumpForce : int = 8000
-#var gravity : int = 450
-#var isOnFloor = true
 var isDashing = false
 var velocity = Vector2()
-#var running_friction = 0.9
-#var stopping_friction = 0.5
 var jumps_left = 2
 var isStands = true
 var isCrouches = false
@@ -29,8 +23,6 @@ const SCALE_MODIFIER = 2
 onready var sprite = $Sprite
 onready var stand_collision = $StandCollision
 onready var crouch_collision = $CrouchCollision
-var stand_texture = preload("res://dedus.png")
-#var crawl_texture = preload("res://dedus_croaching.png")
 var bullet = preload("res://scenes/Bullet.tscn")
 export var can_move = true
 
@@ -63,25 +55,13 @@ func _jump():
 	if(is_on_floor()):
 		jumps_left = 2	
 	if(Input.is_action_just_pressed("jump") and jumps_left > 0):
-#		if velocity.y > 0: 		velocity.y = 0
 		velocity.y = -JUMP_POWER
 		jumps_left -= 1
 		$Sprite.animation = "jump"
-#	if(Input.is_action_just_released("jump") and velocity.y < 0):
-#		velocity.y = 0
-		
-		
-#func _friction():
-#	var isRunning = (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ul_right"))
-#	if(isRunning):
-#		velocity.x *= running_friction
-#	else:
-#		velocity.x *= stopping_friction
 		
 func _gravity(delta):
 	if not isDashing: velocity.y += (GRAVITY * delta)
-#	if (velocity.y > jumpForce):
-#		velocity.y = gravity
+
 	
 func _dash():
 	var can_dash: bool = false
@@ -99,7 +79,6 @@ func _dash():
 func _crouch():
 	if Input.is_action_pressed("crouch") and isStands:
 		$Sprite.animation = "crouch"
-		#move_local_y((SCALE_MODIFIER/2)/sprite.texture.get_height())
 		isStands = false
 		isCrouches = true	
 		stand_collision.disabled = true
@@ -108,30 +87,15 @@ func _crouch():
 
 func _crawl():
 	stand_collision.disabled = true
-	crouch_collision.disabled = false	
-#	
-	#	sprite.scale.y /= SCALE_MODIFIER
-#	stand_collision.scale.y /= SCALE_MODIFIER
-#	sprite.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
-#	stand_collision.position.y += sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
-	
+	crouch_collision.disabled = false		
 	$Sprite.animation = "crouch"
 
 
 func _stand_up():
-#	print("colliding"+str($UpperRayCast.is_colliding()))
-#	print("crouchpressed:"+str(Input.is_action_pressed("crouch")))
-#	print("crouch:"+str(isCrouches))
 	if  not (Input.is_action_pressed("crouch")) and isCrouches:
 		if not $UpperRayCast.is_colliding() :
 			stand_collision.disabled = false
-			crouch_collision.disabled = true
-#			stand_collision.disabled = false
-#			crouch_collision.disabled = true		
-#		sprite.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)	
-#			stand_collision.position.y -= sprite.texture.get_height() / (4 * SCALE_MODIFIER)		
-#		sprite.scale.y *= SCALE_MODIFIER
-#			stand_collision.scale.y *= SCALE_MODIFIER		
+			crouch_collision.disabled = true	
 			isCrouches = false
 			isStands = true
 			$Sprite.animation = "Idle"
@@ -141,6 +105,7 @@ func _stand_up():
 			
 func _shoot():
 	if Input.is_action_just_pressed("shoot"):
+		AudioNode._play_shoot()
 		var bullets = bullet.instance()
 		bullets.position = $BulletPos.global_position
 		get_parent().add_child(bullets) 
@@ -158,23 +123,25 @@ func _fly():
 		
 func _change_health(value):	
 	health += value
-	if health < 0:
+	if health <= 0:
 		health = 0
+		$Sprite.animation = "dead"
+		emit_signal("dead")	
 	if health > max_health:
 		health = max_health		
 	emit_signal("health_changed", health)
+			
 	
 func _process(delta):
 	#Физику поадекватнее переписать
 	if (can_move):
+		var screen_size = get_viewport_rect().size	
 		if not is_on_fly_lvl:
 			_move_x(delta)
-			_jump()
-#			_friction()#			
+			_jump()			
 			_dash()
 			_crouch()
-			_stand_up()					
-#			position += velocity * delta		
+			_stand_up()							
 			_gravity(delta)
 			velocity = move_and_slide(velocity, FLOOR)	
 			
@@ -182,16 +149,12 @@ func _process(delta):
 			_fly()
 			position += velocity * delta
 			velocity = Vector2()
-		_shoot()
-			
-		var screen_size = get_viewport_rect().size	
-		position.x = clamp(position.x, 0, screen_size.x)
-		position.y = clamp(position.y, 0, screen_size.y)
-		
-	if (health <= 0):
-		$Sprite.animation = "dead"
-		emit_signal("dead")		
+			position.y = clamp(position.y, 0, screen_size.y)
+		_shoot()			
+	
+		if (position.y >= screen_size.x * 1.5):
+			_change_health(-max_health)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		
+	
+

@@ -1,7 +1,6 @@
 extends Node
 
 export var scene_name = "DV"
-var taxi_value = 20
 onready var health_progress = $HUD/GUI/HBoxContainer/LifeBar/TextureProgress
 onready var health_value = $HUD/GUI/HBoxContainer/LifeBar/Count/Background/Number
 onready var enemy_progress = $HUD/GUI/HBoxContainer/EnergyBar/TextureProgress
@@ -14,20 +13,23 @@ func _ready():
 	$HUD._set_max_value($Player.max_health, health_progress, health_value)
 	$HUD._set_max_value($EnemyDV.max_health, enemy_progress, enemy_value)	
 	Global.current_scene_name = scene_name
+	Global.is_curr_lvl_won = false
 		
 
 
 func _on_EnemyDV_dead():
 	$EnemyDV._dead()
 	$HUD/EndPanel/CatchLabel.text = $EnemyDV.win_catchfraze	
+	$HUD/EndPanel/NextBtn.visible = true
+	Global.is_curr_lvl_won = true
 	$HUD/EndPanel.visible = true
+
 
 
 func _on_Player_dead():
 	$EnemyDV/Timer.stop()
 	$Player.can_move = false
 	$HUD/EndPanel/CatchLabel.text = $EnemyDV.lose_catchfraze
-	$HUD/EndPanel/NextBtn.text = "Replay"
 	$HUD/EndPanel.visible = true
 
 

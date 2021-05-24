@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://textures/adventure_girl/png/Idle (1).png" type="Texture" id=2]
 [ext_resource path="res://textures/adventure_girl/png/Idle (5).png" type="Texture" id=3]
 [ext_resource path="res://textures/adventure_girl/png/Idle (7).png" type="Texture" id=4]
@@ -55,20 +55,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
+"frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ) ],
+"loop": false,
+"name": "dead",
+"speed": 9.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 37 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "crouch",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ) ],
-"loop": false,
-"name": "dead",
-"speed": 9.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 24 ) ],
 "loop": true,
@@ -78,6 +73,11 @@ animations = [ {
 "frames": [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "shoot",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "run",
 "speed": 5.0
 } ]
 

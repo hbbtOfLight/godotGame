@@ -7,7 +7,7 @@
 [node name="PascalABC" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="AitchBook" parent="." index="0"]
+[node name="AitchBook" parent="." index="1"]
 position = Vector2( 1.15344, -6.86523 )
 scale = Vector2( 0.513989, 0.563863 )
 texture = ExtResource( 3 )

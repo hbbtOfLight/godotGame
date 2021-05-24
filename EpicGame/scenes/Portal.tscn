@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/portal.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Portal.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 105.203
+
+[node name="Portal" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3875, 373 )
+scale = Vector2( 0.44, 0.4 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3874.15, 378.799 )
+scale = Vector2( 0.334351, 0.277919 )
+texture = ExtResource( 1 )

@@ -8,6 +8,7 @@ var max_health = 100
 var health = max_health
 var lose_catchfrase = "Так как я самый простой и понятный,\n скажите что я вам сейчас скажу? ПЕРЕСДАЧА!!!"
 var win_catchfrase = "Садитесь, вам двойка!"
+var hit_score = 5
 #var velocity_for_book = Vector2()
 
 
