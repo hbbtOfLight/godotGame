@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://textures/freescifiplatform/png/Tiles/Tile (3).png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://scripts/enemies/bird.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/enemies/Benzopila.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scripts/enemies/Cactus.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Valerianka.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 256, 64, 0, 64, 0, 0, 256, 0 )
@@ -408,6 +409,32 @@ scale = Vector2( 0.517104, 0.453879 )
 [node name="Cactus4" parent="CuCuS" instance=ExtResource( 20 )]
 position = Vector2( 1758.04, 549.95 )
 scale = Vector2( 0.517104, 0.453879 )
+
+[node name="Valeriankas" type="Node2D" parent="."]
+
+[node name="Valerianka" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 1678, 549 )
+
+[node name="Valerianka2" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 3549, 391 )
+
+[node name="Valerianka3" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 3082, 326 )
+
+[node name="Valerianka4" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 2306, 198 )
+
+[node name="Valerianka5" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 1097, 110 )
+
+[node name="Valerianka6" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 1060, 402 )
+
+[node name="Valerianka7" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 883, 282 )
+
+[node name="Valerianka8" parent="Valeriankas" instance=ExtResource( 21 )]
+position = Vector2( 422, 389 )
 [connection signal="body_entered" from="Portal" to="." method="_on_Portal_body_entered"]
 [connection signal="body_entered" from="StaticDanger" to="StaticDanger" method="_on_StaticDanger_body_entered"]
 [connection signal="body_entered" from="StaticDanger2" to="StaticDanger2" method="_on_StaticDanger_body_entered"]

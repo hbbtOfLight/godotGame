@@ -18,8 +18,6 @@ scale = Vector2( 0.649529, 0.409283 )
 texture = ExtResource( 1 )
 flip_h = true
 
-[node name="ShootTimer" type="Timer" parent="."]
-
 [node name="MotveevsFace" type="CollisionShape2D" parent="."]
 position = Vector2( 864.289, 338.88 )
 scale = Vector2( 0.639998, 0.696895 )
@@ -28,4 +26,3 @@ shape = SubResource( 1 )
 [node name="Aitch_pos" type="Position2D" parent="."]
 position = Vector2( 812.489, 403.742 )
 [connection signal="dead" from="." to="." method="_on_EnemyM_dead"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

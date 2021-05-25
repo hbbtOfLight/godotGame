@@ -49,5 +49,8 @@ func _on_EnemyM_dead():
 	$HUD/EndPanel/CatchLabel.text = $EnemyM.win_catchfrase
 	$HUD/EndPanel.visible = true
 	$HUD/EndPanel/NextBtn.visible = true
-	Global.is_curr_lvl_won = true
+	if not Global.is_curr_lvl_won:		
+		Global.player_max_health += round(Global.player_score/10)
+		Global.is_curr_lvl_won = true
+
 	

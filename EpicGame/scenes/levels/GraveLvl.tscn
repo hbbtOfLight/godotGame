@@ -127,3 +127,27 @@ position = Vector2( 1621.61, 376.83 )
 
 [node name="Cactus4" parent="CuCuS" index="4"]
 position = Vector2( 1572.78, 377.416 )
+
+[node name="Valerianka" parent="Valeriankas" index="0"]
+position = Vector2( 1921.24, 556.071 )
+
+[node name="Valerianka2" parent="Valeriankas" index="1"]
+position = Vector2( 3048.37, 108.157 )
+
+[node name="Valerianka3" parent="Valeriankas" index="2"]
+position = Vector2( 2613.9, 163.365 )
+
+[node name="Valerianka4" parent="Valeriankas" index="3"]
+position = Vector2( 2180.13, 125.875 )
+
+[node name="Valerianka5" parent="Valeriankas" index="4"]
+position = Vector2( 1253.98, 179.296 )
+
+[node name="Valerianka6" parent="Valeriankas" index="5"]
+position = Vector2( 1970.75, 341.189 )
+
+[node name="Valerianka7" parent="Valeriankas" index="6"]
+position = Vector2( 735.922, 324.426 )
+
+[node name="Valerianka8" parent="Valeriankas" index="7"]
+position = Vector2( 156.128, 520.522 )

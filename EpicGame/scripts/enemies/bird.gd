@@ -50,7 +50,7 @@ func _on_attack_checker_body_entered(body):
 
 func _on_Timer_timeout():
 	$Timer.stop()
-	speed = 50
+	speed = 75
 	$AnimatedSprite.play("bird_move")
 	
 

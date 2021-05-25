@@ -2,7 +2,6 @@
 
 [ext_resource path="res://fonts/Chicarego.tres" type="DynamicFont" id=1]
 
-
 [node name="FirstScene" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,10 +18,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 92.0
-margin_top = 60.0
-margin_right = 228.0
-margin_bottom = 119.0
+margin_left = 444.0
+margin_top = 270.0
+margin_right = 580.0
+margin_bottom = 329.0
 custom_fonts/font = ExtResource( 1 )
 text = "First Scene
 "

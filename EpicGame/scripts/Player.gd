@@ -2,13 +2,11 @@ extends KinematicBody2D
 
 signal dead
 signal health_changed
-var played_fail = false
 export var is_on_fly_lvl = false
 const SPEED = 200
 const FLOOR = Vector2(0, -1)
 const GRAVITY = 970
 const JUMP_POWER = 500
-#onready var player_vars = get_node("/root/PlayerGlVars")
 var speed = 300
 var maxLives = 5
 var max_health = Global.player_max_health 
@@ -100,7 +98,6 @@ func _stand_up():
 			isCrouches = false
 			isStands = true
 			$Sprite.animation = "Idle"
-#			print($UpperRayCast.is_colliding())
 		if($UpperRayCast.is_colliding()):			
 			_crawl()
 			
@@ -154,9 +151,6 @@ func _process(delta):
 		_shoot()			
 	
 		if (position.y >= screen_size.x * 1.5):
-			if (not played_fail):
-				AudioNode._play_fall()
-				played_fail = true
 			_change_health(-max_health)
 
 		

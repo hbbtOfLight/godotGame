@@ -24,10 +24,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
-#func _on_Aitch_body_entered(body):
-#	if body.is_in_group("Player"):
-
-
 func _on_Trost_body_entered(body):
 	if (body.is_in_group("Player")):
 		body._change_health(-damage)

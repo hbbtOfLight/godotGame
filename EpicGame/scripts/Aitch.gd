@@ -7,9 +7,8 @@ var rotation_speed = 10
 
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 	
 func _setup(vector):
 	init_vector = vector
@@ -29,7 +28,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Aitch_body_entered(body):
-	print (body.is_in_group("Player"))
 	if body.is_in_group("Player"):
 		body._change_health(-damage)
 		queue_free()

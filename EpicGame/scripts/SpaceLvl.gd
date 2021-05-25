@@ -15,6 +15,7 @@ func _ready():
 	$HUD/GUI/HBoxContainer/EnergyBar.visible = false
 	$HUD._set_max_value($Player.max_health, health_progress, health_value)
 	Global.current_scene_name = scene_name
+	Global.player_score = Global.prev_score
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

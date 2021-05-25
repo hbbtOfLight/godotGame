@@ -19,8 +19,6 @@ func goto_scene():
 	
 	
 func _load_scene(path):
-	print(current_scene_name)
-	print(path)
 	current_scene.free()
 	var s = ResourceLoader.load(path)
 	current_scene = s.instance()

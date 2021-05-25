@@ -7,7 +7,7 @@ var rotation_speed = 10
 
 
 func _ready():
-	pass # Replace with function body.
+	pass 
 	
 func _setup(vector):
 	init_vector = vector
@@ -24,8 +24,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
-#func _on_Aitch_body_entered(body):
-#	if body.is_in_group("Player"):
 
 
 func _on_Aitch_body_entered(body):

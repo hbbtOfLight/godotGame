@@ -15,13 +15,6 @@ var is_alive = true
 var hit_score = 10
 
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 	
@@ -42,8 +35,6 @@ func _dead():
 	
 	
 func _changedir():
-#	print(get_floor_velocity().y)
-#	print(position)
 	var delpos = $Sprite.texture.get_height()* $Sprite.scale.y/2
 	if position.y - delpos <= 0:
 		direction = 1
@@ -68,6 +59,5 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	print ("timeout")
 	$Timer.wait_time *= 0.99
 	_shoot()

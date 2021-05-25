@@ -1,7 +1,5 @@
 extends MarginContainer
 
-#const first_scene = preload("res://scenes/levels/lvl.tscn")
-
 
 onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Selector
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer/Selector
@@ -26,7 +24,7 @@ func _process(delta):
 func handle_selection(_current_selection):
 	if _current_selection == 0:
 		Global.player_score = 0
-		Global.goto_path_scene("res://scenes/levels/lvl.tscn")
+		Global.goto_path_scene("res://scenes/levels/DesertLvl.tscn")
 		queue_free()
 	elif _current_selection == 1:
 		Global.reload_scene()
