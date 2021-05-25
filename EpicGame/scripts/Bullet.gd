@@ -35,7 +35,7 @@ func _on_Bullet_body_entered(body):
 		body._change_health(-damage)
 		Global.player_score += body.hit_score
 	if body.name == "Player":
-		return
+		body._change_health(-damage)
 #	enemy = body as Player
 #	if enemy:
 #		return

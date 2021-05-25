@@ -70,14 +70,14 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "shoot",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 13 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "shoot",
 "speed": 5.0
 } ]
 
@@ -91,6 +91,7 @@ extents = Vector2( 27.9096, 38.0249 )
 "Player",
 ]]
 position = Vector2( 64.4285, 549.537 )
+collision_mask = 22
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -100,7 +101,7 @@ frames = SubResource( 1 )
 animation = "shoot"
 
 [node name="StandCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 1.89488, -30.8502 )
+position = Vector2( 1.89488, -29.8502 )
 scale = Vector2( 0.832538, 0.673176 )
 shape = SubResource( 2 )
 

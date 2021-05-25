@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://textures/freescifiplatform/png/Tiles/Tile (3).png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,10 @@
 [ext_resource path="res://scripts/StaticDanger.gd" type="Script" id=14]
 [ext_resource path="res://textures/freescifiplatform/png/Tiles/Spike.png" type="Texture" id=15]
 [ext_resource path="res://textures/freescifiplatform/png/Tiles/BGTile (3).png" type="Texture" id=16]
+[ext_resource path="res://scripts/enemies/bug.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/enemies/bird.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scripts/enemies/Benzopila.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scripts/enemies/Cactus.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 256, 64, 0, 64, 0, 0, 256, 0 )
@@ -207,12 +211,10 @@ extents = Vector2( 37.8518, 12.496 )
 [node name="SpaceLvl" type="Node"]
 script = ExtResource( 11 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63.428, 439.537 )
-
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.25, 0.25 )
 tile_set = SubResource( 8 )
+collision_layer = 4
 format = 1
 tile_data = PoolIntArray( 589888, 4, 0, 589892, 3, 0, 917636, 5, 0, 917639, 6, 0, 917642, 6, 0, 917645, 6, 0, 917648, 3, 0, 983196, 5, 0, 983199, 6, 0, 983202, 3, 0, 1245234, 5, 0, 1245238, 3, 0, 1310819, 5, 0, 1310822, 6, 0, 1310825, 3, 0, 1441978, 5, 0, 1441981, 5, 0, 1441984, 6, 0, 1441987, 6, 0, 1441990, 6, 0, 1441993, 3, 0, 1638523, 4, 0, 1703959, 5, 0, 1703962, 3, 0, 1704019, 5, 0, 1704022, 4, 0, 1704154, 2, 0, 1704158, 2, 0, 1704176, 2, 0, 1769502, 2, 0, 1769505, 0, 0, 1900556, 1, 0, 1900559, 0, 0, 2031648, 7, 0, 2228226, 2, 0, 2228256, 7, 0, 2228267, 1, 0, 2228270, 0, 0, 2228298, 2, 0, 2228342, 2, 0, 2359374, 4, 0, 2359378, 4, 0, 2359382, 4, 0, 2359386, 4, 0, 2359390, 4, 0, 2359394, 4, 0, 2359398, 4, 0, 2359402, 4, 0, 2359406, 4, 0, 2359410, 4, 0 )
 
@@ -241,6 +243,7 @@ __meta__ = {
 [node name="StaticDanger" type="Area2D" parent="."]
 position = Vector2( 510, 428 )
 scale = Vector2( 1.4, 1 )
+collision_layer = 6
 script = ExtResource( 14 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="StaticDanger"]
@@ -255,6 +258,7 @@ texture = ExtResource( 15 )
 [node name="StaticDanger2" type="Area2D" parent="."]
 position = Vector2( 719, 531 )
 scale = Vector2( 1.4, 1 )
+collision_layer = 6
 script = ExtResource( 14 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="StaticDanger2"]
@@ -271,8 +275,141 @@ texture = ExtResource( 15 )
 __meta__ = {
 "_edit_lock_": true
 }
-[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
-[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
+
+[node name="bugs" type="Node2D" parent="."]
+position = Vector2( 3210.8, 338.422 )
+
+[node name="enemy" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -2928.03, 112.523 )
+
+[node name="enemy2" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -2395.9, -58.9291 )
+direction = 1
+
+[node name="enemy3" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -1352.01, 222.809 )
+
+[node name="enemy4" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -1924.46, 226.176 )
+direction = 1
+
+[node name="enemy8" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -26.7988, 1.26282 )
+
+[node name="enemy5" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -1782.35, 67.1145 )
+
+[node name="enemy7" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -52.896, 2.66589 )
+
+[node name="enemy6" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( -1087.1, -127.399 )
+direction = 1
+
+[node name="enemy9" parent="bugs" instance=ExtResource( 17 )]
+
+[node name="enemy10" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( 25.8459, -0.749146 )
+
+[node name="enemy11" parent="bugs" instance=ExtResource( 17 )]
+position = Vector2( 52.8157, -1.49829 )
+
+[node name="birds" type="Node2D" parent="."]
+
+[node name="Bird" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 368.038, 347.811 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+
+[node name="Bird2" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 1340.81, 260.999 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+
+[node name="Bird3" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 1171.94, 441.759 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+
+[node name="Bird4" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 2232.86, 123.673 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+direction = 1
+
+[node name="Bird5" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 2910.56, 238.826 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+direction = 1
+
+[node name="Bird6" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 3007.78, 235.994 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+direction = 1
+
+[node name="Bird7" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 2956.81, 236.938 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+direction = 1
+
+[node name="Bird8" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 3420.25, 325.662 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+
+[node name="Bird9" parent="birds" instance=ExtResource( 18 )]
+position = Vector2( 3638.29, 333.213 )
+rotation = 0.25845
+scale = Vector2( 1.77029, 1.99448 )
+direction = 1
+
+[node name="pills" type="Node2D" parent="."]
+
+[node name="Benzopila" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 574.273, 233.148 )
+
+[node name="Benzopila2" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 1998.94, 412.718 )
+
+[node name="Benzopila3" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 2819.5, 462.665 )
+
+[node name="Benzopila4" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 3385.56, 157.039 )
+
+[node name="Benzopila5" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 3664.95, 190.074 )
+
+[node name="Benzopila6" parent="pills" instance=ExtResource( 19 )]
+position = Vector2( 3771.6, 544.027 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 63.428, 439.537 )
+
+[node name="CuCuS" type="Node2D" parent="."]
+
+[node name="Cactus" parent="CuCuS" instance=ExtResource( 20 )]
+position = Vector2( 1670.04, 259.95 )
+
+[node name="Cactus5" parent="CuCuS" instance=ExtResource( 20 )]
+position = Vector2( 2578.04, 180.95 )
+
+[node name="Cactus2" parent="CuCuS" instance=ExtResource( 20 )]
+position = Vector2( 1378.04, 546.95 )
+scale = Vector2( 0.517104, 0.453879 )
+
+[node name="Cactus3" parent="CuCuS" instance=ExtResource( 20 )]
+position = Vector2( 1565.04, 547.95 )
+scale = Vector2( 0.517104, 0.453879 )
+
+[node name="Cactus4" parent="CuCuS" instance=ExtResource( 20 )]
+position = Vector2( 1758.04, 549.95 )
+scale = Vector2( 0.517104, 0.453879 )
 [connection signal="body_entered" from="Portal" to="." method="_on_Portal_body_entered"]
 [connection signal="body_entered" from="StaticDanger" to="StaticDanger" method="_on_StaticDanger_body_entered"]
 [connection signal="body_entered" from="StaticDanger2" to="StaticDanger2" method="_on_StaticDanger_body_entered"]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
