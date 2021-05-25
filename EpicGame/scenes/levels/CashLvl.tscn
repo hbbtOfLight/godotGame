@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://textures/graveyardtilesetnew/png/BG.png" type="Texture" id=1]
+[ext_resource path="res://scripts/CashLvl.gd" type="Script" id=2]
+[ext_resource path="res://textures/graveyardtilesetnew/GraveSet.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/Valerianka.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/EnemyKash.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=21]
+
+[node name="CashLvl" type="Node"]
+script = ExtResource( 2 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 514, 300.5 )
+scale = Vector2( 0.514, 0.524934 )
+texture = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 21 )]
+position = Vector2( 40.428, 500.537 )
+
+[node name="EnemyCash" parent="." instance=ExtResource( 19 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.25, 0.25 )
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( 655386, 13, 0, 655388, 14, 0, 655390, 15, 0, 917520, 13, 0, 917522, 14, 0, 917524, 15, 0, 1245188, 13, 0, 1245189, 14, 0, 1245191, 15, 0, 1310758, 13, 0, 1310760, 14, 0, 1310762, 14, 0, 1310764, 15, 0, 1638421, 13, 0, 1638423, 14, 0, 1638424, 14, 0, 1638425, 14, 0, 1638426, 14, 0, 1638427, 14, 0, 1638428, 14, 0, 1638429, 14, 0, 1638430, 14, 0, 1638431, 14, 0, 1638432, 14, 0, 1638433, 14, 0, 1638434, 14, 0, 1638436, 15, 0, 1769481, 13, 0, 1769483, 14, 0, 1769485, 15, 0, 2097152, 13, 0, 2097154, 14, 0, 2097156, 15, 0 )
+
+[node name="HUD" parent="." instance=ExtResource( 20 )]
+
+[node name="Valeriankas" type="Node2D" parent="."]
+
+[node name="Valerianka" parent="Valeriankas" instance=ExtResource( 4 )]
+position = Vector2( 102.768, 289.233 )
+scale = Vector2( 0.679999, 0.600001 )
+
+[node name="Valerianka2" parent="Valeriankas" instance=ExtResource( 4 )]
+position = Vector2( 485.234, 148.325 )
+scale = Vector2( 0.679999, 0.600001 )
+
+[node name="Valerianka3" parent="Valeriankas" instance=ExtResource( 4 )]
+position = Vector2( 674.878, 298.769 )
+scale = Vector2( 0.679999, 0.600001 )
+
+[node name="Valerianka4" parent="Valeriankas" instance=ExtResource( 4 )]
+position = Vector2( 530.791, 381.407 )
+scale = Vector2( 0.679999, 0.600001 )
+
+[node name="Valerianka5" parent="Valeriankas" instance=ExtResource( 4 )]
+position = Vector2( 373.99, 381.407 )
+scale = Vector2( 0.679999, 0.600001 )
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
+[connection signal="change_health" from="EnemyCash" to="." method="_on_EnemyCash_change_health"]
+[connection signal="dead" from="EnemyCash" to="." method="_on_EnemyCash_dead"]

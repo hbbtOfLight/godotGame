@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Trost.gd" type="Script" id=1]
+[ext_resource path="res://textures/trost.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.64941, 7.45731 )
+
+[node name="Trost" type="Area2D"]
+position = Vector2( 525.63, 566.612 )
+scale = Vector2( 0.76, 0.64 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="AitchCollision" type="CollisionShape2D" parent="."]
+position = Vector2( -1.44702, -7.52063 )
+scale = Vector2( 4.88889, 6.53714 )
+shape = SubResource( 1 )
+
+[node name="AitchBook" type="Sprite" parent="."]
+position = Vector2( -0.235352, -8.65096 )
+scale = Vector2( 0.0471925, 0.0895198 )
+texture = ExtResource( 2 )
+
+[node name="AitchNotifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.671997, -7.11389 )
+scale = Vector2( 0.647632, 3.74564 )
+[connection signal="body_entered" from="." to="." method="_on_Trost_body_entered"]
+[connection signal="screen_exited" from="AitchNotifier" to="." method="_on_VisibilityNotifier2D_screen_exited"]

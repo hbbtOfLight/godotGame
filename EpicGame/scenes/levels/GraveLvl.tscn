@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/levels/SpaceLvl.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/graveyardtilesetnew/png/BG.png" type="Texture" id=2]
+[ext_resource path="res://textures/graveyardtilesetnew/png/Objects/Skeleton.png" type="Texture" id=3]
+[ext_resource path="res://textures/graveyardtilesetnew/GraveSet.tres" type="TileSet" id=4]
+
+[node name="GraveLvl" instance=ExtResource( 1 )]
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource( 4 )
+tile_data = PoolIntArray( 327749, 15, 0, 524477, 13, 0, 524479, 14, 0, 524481, 14, 0, 524483, 14, 0, 524485, 15, 0, 589956, 13, 0, 589958, 14, 0, 589960, 14, 0, 589962, 14, 0, 589964, 14, 0, 589966, 14, 0, 589968, 14, 0, 589970, 14, 0, 589972, 14, 0, 589974, 14, 0, 589976, 15, 0, 786591, 13, 0, 786593, 14, 0, 786595, 14, 0, 786597, 14, 0, 786599, 15, 0, 852021, 13, 0, 852023, 14, 0, 852025, 14, 0, 852027, 14, 0, 852029, 14, 0, 852031, 14, 0, 852033, 14, 0, 852035, 14, 0, 852037, 14, 0, 852039, 14, 0, 852041, 14, 0, 852043, 14, 0, 852045, 14, 0, 852047, 14, 0, 852049, 14, 0, 852051, 14, 0, 852053, 15, 0, 917632, 13, 0, 917684, 13, 0, 917686, 14, 0, 917688, 15, 0, 1441835, 13, 0, 1441837, 14, 0, 1441839, 15, 0, 1507448, 13, 0, 1507450, 14, 0, 1507452, 15, 0, 1638493, 13, 0, 1638495, 14, 0, 1638497, 14, 0, 1638499, 14, 0, 1638501, 15, 0, 1769495, 13, 0, 1769497, 14, 0, 1769499, 14, 0, 1769501, 14, 0, 1769503, 14, 0, 1769505, 14, 0, 1769507, 14, 0, 1769509, 14, 0, 1769511, 15, 0, 2097260, 0, 0, 2097262, 1, 0, 2097264, 2, 0, 2097306, 0, 0, 2097308, 1, 0, 2097310, 2, 0, 2228332, 3, 0, 2228334, 4, 0, 2228336, 5, 0, 2228378, 3, 0, 2228380, 4, 0, 2228382, 5, 0, 2293760, 0, 0, 2293762, 1, 0, 2293764, 1, 0, 2293766, 1, 0, 2293768, 1, 0, 2293770, 2, 0, 2359404, 3, 0, 2359406, 4, 0, 2359408, 4, 0, 2359410, 1, 0, 2359412, 1, 0, 2359414, 1, 0, 2359416, 1, 0, 2359418, 1, 0, 2359420, 1, 0, 2359422, 1, 0, 2359424, 1, 0, 2359426, 1, 0, 2359428, 1, 0, 2359430, 1, 0, 2359432, 1, 0, 2359434, 1, 0, 2359436, 1, 0, 2359438, 1, 0, 2359440, 1, 0, 2359442, 1, 0, 2359444, 1, 0, 2359446, 1, 0, 2359448, 1, 0, 2359450, 4, 0, 2359452, 4, 0, 2359454, 5, 0, 2818094, 15, 0 )
+
+[node name="Portal" parent="." index="3"]
+position = Vector2( -764, -288 )
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2( 514.5, 300 )
+scale = Vector2( 0.513118, 0.521878 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" parent="StaticDanger" index="1"]
+position = Vector2( 19.5714, -10 )
+scale = Vector2( 0.795536, 0.803125 )
+texture = ExtResource( 3 )
+
+[node name="StaticDanger2" parent="." index="6"]
+position = Vector2( 2300, 143 )
+
+[node name="Sprite" parent="StaticDanger2" index="1"]
+position = Vector2( 18.1429, -8 )
+scale = Vector2( 0.710193, 0.694441 )
+texture = ExtResource( 3 )
+
+[node name="bugs" parent="." index="7"]
+position = Vector2( 3063.72, 382.263 )
+
+[node name="enemy" parent="bugs" index="0"]
+position = Vector2( -3042.32, 210.942 )
+
+[node name="enemy2" parent="bugs" index="1"]
+position = Vector2( -2474.9, 0.0709 )
+
+[node name="enemy3" parent="bugs" index="2"]
+position = Vector2( -2122.76, -181.656 )
+
+[node name="enemy4" parent="bugs" index="3"]
+position = Vector2( -2005.07, -152.833 )
+
+[node name="enemy8" parent="bugs" index="4"]
+position = Vector2( -749.462, 180.868 )
+
+[node name="enemy5" parent="bugs" index="5"]
+position = Vector2( -1916.7, -163.402 )
+
+[node name="enemy7" parent="bugs" index="6"]
+position = Vector2( -775.559, 182.271 )
+
+[node name="enemy6" parent="bugs" index="7"]
+position = Vector2( -1000.83, -176.896 )
+
+[node name="enemy9" parent="bugs" index="8"]
+position = Vector2( -141.421, -168.291 )
+
+[node name="enemy10" parent="bugs" index="9"]
+position = Vector2( -1037.64, 178.856 )
+
+[node name="enemy11" parent="bugs" index="10"]
+position = Vector2( -1010.67, 178.107 )
+
+[node name="Bird" parent="birds" index="0"]
+position = Vector2( 473.6, 372.416 )
+
+[node name="Bird2" parent="birds" index="1"]
+position = Vector2( 1517.59, 294.94 )
+
+[node name="Bird3" parent="birds" index="2"]
+position = Vector2( 1594.79, 300.338 )
+
+[node name="Bird4" parent="birds" index="3"]
+position = Vector2( 2272.46, 96.8029 )
+
+[node name="Bird5" parent="birds" index="4"]
+position = Vector2( 2723.88, 125.689 )
+
+[node name="Bird6" parent="birds" index="5"]
+position = Vector2( 2821.1, 122.857 )
+
+[node name="Bird7" parent="birds" index="6"]
+position = Vector2( 2770.13, 123.801 )
+
+[node name="Bird8" parent="birds" index="7"]
+position = Vector2( 1843.4, 300.206 )
+
+[node name="Bird9" parent="birds" index="8"]
+position = Vector2( 2061.44, 307.757 )
+
+[node name="Benzopila" parent="pills" index="0"]
+position = Vector2( 885.404, 479.989 )
+
+[node name="Benzopila2" parent="pills" index="1"]
+position = Vector2( 281.372, 492.088 )
+
+[node name="Benzopila3" parent="pills" index="2"]
+position = Vector2( 2482.92, 281.646 )
+
+[node name="Benzopila4" parent="pills" index="3"]
+position = Vector2( 2750.58, 294.218 )
+
+[node name="Benzopila5" parent="pills" index="4"]
+position = Vector2( 3015.83, 272.098 )
+
+[node name="Benzopila6" parent="pills" index="5"]
+position = Vector2( 1433.91, 211.687 )
+
+[node name="Cactus" parent="CuCuS" index="0"]
+position = Vector2( 1778.93, 450.869 )
+
+[node name="Cactus5" parent="CuCuS" index="1"]
+position = Vector2( 2520.06, 458.136 )
+
+[node name="Cactus2" parent="CuCuS" index="2"]
+position = Vector2( 1518.05, 375.83 )
+
+[node name="Cactus3" parent="CuCuS" index="3"]
+position = Vector2( 1621.61, 376.83 )
+
+[node name="Cactus4" parent="CuCuS" index="4"]
+position = Vector2( 1572.78, 377.416 )
+
+[node name="Valerianka" parent="Valeriankas" index="0"]
+position = Vector2( 1921.24, 556.071 )
+
+[node name="Valerianka2" parent="Valeriankas" index="1"]
+position = Vector2( 3048.37, 108.157 )
+
+[node name="Valerianka3" parent="Valeriankas" index="2"]
+position = Vector2( 2613.9, 163.365 )
+
+[node name="Valerianka4" parent="Valeriankas" index="3"]
+position = Vector2( 2180.13, 125.875 )
+
+[node name="Valerianka5" parent="Valeriankas" index="4"]
+position = Vector2( 1253.98, 179.296 )
+
+[node name="Valerianka6" parent="Valeriankas" index="5"]
+position = Vector2( 1970.75, 341.189 )
+
+[node name="Valerianka7" parent="Valeriankas" index="6"]
+position = Vector2( 735.922, 324.426 )
+
+[node name="Valerianka8" parent="Valeriankas" index="7"]
+position = Vector2( 156.128, 520.522 )

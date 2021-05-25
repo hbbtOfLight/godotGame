@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Aitch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/PascalABC.gd" type="Script" id=2]
+[ext_resource path="res://textures/pascallogo.png" type="Texture" id=3]
+
+[node name="PascalABC" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+
+[node name="AitchBook" parent="." index="1"]
+position = Vector2( 1.15344, -6.86523 )
+scale = Vector2( 0.513989, 0.563863 )
+texture = ExtResource( 3 )
