@@ -1,0 +1,93 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/chararacters/enemies/bug/bug2.png" type="Texture" id=2]
+[ext_resource path="res://assets/chararacters/enemies/bug/bug4.png" type="Texture" id=3]
+[ext_resource path="res://assets/chararacters/enemies/bug/bug3.png" type="Texture" id=4]
+[ext_resource path="res://assets/chararacters/enemies/bug/bug5.png" type="Texture" id=5]
+[ext_resource path="res://assets/chararacters/enemies/bug/bug1.png" type="Texture" id=6]
+[ext_resource path="res://assets/chararacters/enemies/boom/boom3.png" type="Texture" id=7]
+[ext_resource path="res://assets/chararacters/enemies/boom/boom5.png" type="Texture" id=8]
+[ext_resource path="res://assets/chararacters/enemies/boom/boom1.png" type="Texture" id=9]
+[ext_resource path="res://assets/chararacters/enemies/boom/boom2.png" type="Texture" id=10]
+[ext_resource path="res://assets/chararacters/enemies/boom/boom4.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "bug_move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "bug_attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "boom",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.4745, 5.53472 )
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 21.4499, 4.81266 )
+
+[node name="enemy" type="KinematicBody2D"]
+light_mask = 2
+collision_layer = 2
+collision_mask = 13
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = 2
+position = Vector2( -2.36236, -9.92189 )
+frames = SubResource( 1 )
+animation = "bug_move"
+playing = true
+
+[node name="body" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2( 1.41741, 3.46478 )
+shape = SubResource( 2 )
+
+[node name="floor_checker" type="RayCast2D" parent="."]
+light_mask = 2
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="top_checker" type="Area2D" parent="."]
+light_mask = 2
+collision_layer = 2
+collision_mask = 9
+
+[node name="top" type="CollisionShape2D" parent="top_checker"]
+light_mask = 2
+position = Vector2( 2.36234, -1.41741 )
+shape = SubResource( 3 )
+
+[node name="attack_checker" type="Area2D" parent="."]
+light_mask = 2
+collision_layer = 2
+
+[node name="bite" type="CollisionShape2D" parent="attack_checker"]
+light_mask = 2
+position = Vector2( -0.595284, 4.36535 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.3
+[connection signal="area_entered" from="top_checker" to="." method="_on_top_checker_area_entered"]
+[connection signal="body_entered" from="top_checker" to="." method="_on_top_checker_body_entered"]
+[connection signal="body_entered" from="attack_checker" to="." method="_on_attack_checker_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

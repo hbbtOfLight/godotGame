@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Aitch.gd" type="Script" id=1]
+[ext_resource path="res://textures/rasmysiel.jpg" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.64941, 7.45731 )
+
+[node name="Aitch" type="Area2D"]
+position = Vector2( 525.63, 566.612 )
+scale = Vector2( 0.36, 0.28 )
+script = ExtResource( 1 )
+
+[node name="AitchCollision" type="CollisionShape2D" parent="."]
+position = Vector2( -1.44702, -7.52063 )
+scale = Vector2( 4.88889, 6.53714 )
+shape = SubResource( 1 )
+
+[node name="AitchBook" type="Sprite" parent="."]
+position = Vector2( -0.235352, -6.86523 )
+scale = Vector2( 0.0510261, 0.0400525 )
+texture = ExtResource( 2 )
+
+[node name="AitchNotifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.671997, -7.11389 )
+scale = Vector2( 3.77306, 4.68915 )
+[connection signal="body_entered" from="." to="." method="_on_Aitch_body_entered"]
+[connection signal="screen_exited" from="AitchNotifier" to="." method="_on_VisibilityNotifier2D_screen_exited"]

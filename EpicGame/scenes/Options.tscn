@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://TimesNewPixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://textures/graveyardtilesetnew/png/BG.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Options.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 63
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="Options" type="Control"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -449.0
+margin_top = -106.0
+margin_right = 1551.0
+margin_bottom = 1037.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenteredContainer" type="CenterContainer" parent="."]
+margin_left = 269.0
+margin_top = 97.0
+margin_right = 779.0
+margin_bottom = 548.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenteredContainer"]
+margin_left = 129.0
+margin_top = 169.0
+margin_right = 381.0
+margin_bottom = 281.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenteredContainer/VBoxContainer"]
+margin_right = 252.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MusicVolume" type="HBoxContainer" parent="CenteredContainer/VBoxContainer/CenterContainer"]
+margin_left = 4.0
+margin_right = 247.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CenteredContainer/VBoxContainer/CenterContainer/MusicVolume"]
+margin_right = 139.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="CenteredContainer/VBoxContainer/CenterContainer/MusicVolume"]
+margin_left = 143.0
+margin_right = 243.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 50.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenteredContainer/VBoxContainer"]
+margin_top = 58.0
+margin_right = 252.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MusicVolume" type="HBoxContainer" parent="CenteredContainer/VBoxContainer/CenterContainer2"]
+margin_right = 252.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CenteredContainer/VBoxContainer/CenterContainer2/MusicVolume"]
+margin_right = 148.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Sound"
+
+[node name="SoundSlider" type="HSlider" parent="CenteredContainer/VBoxContainer/CenterContainer2/MusicVolume"]
+margin_left = 152.0
+margin_right = 252.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 50.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 889.0
+margin_top = 529.0
+margin_right = 975.0
+margin_bottom = 574.0
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="CenteredContainer/VBoxContainer/CenterContainer/MusicVolume/MusicSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="CenteredContainer/VBoxContainer/CenterContainer2/MusicVolume/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
